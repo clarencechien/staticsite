@@ -1,7 +1,7 @@
 ---
 title: "Google I/O: A Quick Introduction"
 date: 2025-05-22
-tags: \["Google I/O", "Developer Conference", "Google", "Technology"]
+tags: ["Developer Conference", "Google", "Technology"]
 description: "A concise overview of Google's annual developer conference, its purpose, key components, and why it matters to developers and tech enthusiasts alike."
 ----
 
