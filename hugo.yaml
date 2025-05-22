@@ -1,0 +1,49 @@
+baseURL: "https://example.com/" # Placeholder, user will update
+languageCode: "en-us"
+title: "Tech Forward Blog"
+theme: "PaperMod" # Hugo will look for themes/PaperMod
+
+minify: true
+
+params:
+  env: production
+  description: "A blog about AI, Code, and Future Tech"
+  author: "AI Enthusiast"
+  defaultTheme: "dark"
+  ShowCodeCopyButtons: true
+  ShowRssButtonInSectionTermList: true
+  ShowToc: true
+  TocOpen: false
+
+  homeInfoParams:
+    Title: "Hi there 👋"
+    Content: "Welcome to a blog exploring the frontiers of AI, software development, and cloud technologies. Dive into articles on LLMs, Vector Databases, DevOps, and more."
+
+  socialIcons:
+    - name: "github"
+      url: "https://github.com/" # Placeholder
+    - name: "twitter"
+      url: "https://twitter.com/" # Placeholder
+
+  assets:
+    disableHLJS: true # Using Chroma
+
+menu:
+  main:
+    - identifier: blog
+      name: Blog
+      url: /blog/
+      weight: 10
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 20
+
+pygmentsUseClasses: true
+markup:
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    style: "monokai"
