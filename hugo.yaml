@@ -1,4 +1,4 @@
-baseURL: "https://example.com/" # Placeholder, user will update
+baseURL: "https://clarencechien.github.io/staticsite/" # Placeholder, user will update
 languageCode: "en-us"
 title: "Tech Forward Blog"
 theme: "github.com/adityatelange/hugo-PaperMod" # Hugo will look for themes/PaperMod
