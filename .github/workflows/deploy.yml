@@ -42,11 +42,50 @@ jobs:
       
       - name: Initialize Hugo Modules and Get Theme
         run: |
-          # The go.mod file should exist. If not, uncomment the next line.
-          # hugo mod init github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}
+          # Ensure go.mod is correctly initialized for the repository
+          # The existing go.mod has "module my-tech-blog/my-tech-blog"
+          # We should use the actual GitHub repository name for module path
+          # Check if go.mod exists and has the correct module path
+          if [ -f go.mod ]; then
+            # If go.mod exists, ensure it has the correct module path or re-initialize
+            # For simplicity, let's re-initialize if the path is not the dynamic one.
+            # A more robust check would be `grep -q "module github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}" go.mod`
+            # If not found, then re-init. For now, we'll assume it might need re-init or the existing one is fine.
+            # The simplest approach is to ensure `hugo mod init` runs if go.mod is not what's expected,
+            # but `hugo mod init` fails if go.mod already exists.
+            # Let's try to update the go.mod created in a previous step using sed, then run get and vendor.
+            # This is safer than re-initializing if other dependencies were ever added.
+            # The original go.mod was "module my-tech-blog/my-tech-blog"
+            sed -i 's|module my-tech-blog/my-tech-blog|module github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}|' go.mod
+            echo "Updated go.mod module path:"
+            cat go.mod
+          else
+            echo "go.mod not found, initializing..."
+            hugo mod init github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}
+          fi
+          
+          echo "Fetching Hugo modules (PaperMod theme)..."
           hugo mod get -u github.com/adityatelange/hugo-PaperMod
-          # Verify theme is downloaded
-          ls -R themes/ || ls -R _vendor/ || echo "Theme not found in standard locations"
+          
+          echo "--- go.mod content ---"
+          cat go.mod
+          echo "--- go.sum content ---"
+          cat go.sum || echo "go.sum not found" # go.sum might not exist until 'hugo mod tidy' or after build
+          
+          echo "Vendoring Hugo modules..."
+          hugo mod vendor
+          
+          echo "--- _vendor directory listing (top level) ---"
+          ls -R _vendor/ | head -n 20 # List top-level contents of _vendor
+          # Verify theme is downloaded and vendored
+          if [ -d "_vendor/github.com/adityatelange/hugo-PaperMod" ]; then
+            echo "PaperMod theme successfully vendored."
+          else
+            echo "Error: PaperMod theme not found in _vendor."
+            # List more of _vendor to debug if not found
+            ls -R _vendor/
+            exit 1 # Fail the build if theme isn't there
+          fi
 
       - name: Build Hugo site
         env:
