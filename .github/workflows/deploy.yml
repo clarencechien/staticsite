@@ -64,8 +64,8 @@ jobs:
             hugo mod init github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}
           fi
           
-          echo "Fetching Hugo modules (PaperMod theme)..."
-          hugo mod get -u github.com/adityatelange/hugo-PaperMod
+          echo "Tidying Hugo modules (resolving PaperMod theme from hugo.yaml)..."
+          hugo mod tidy # This should resolve imports from hugo.yaml and update go.mod/go.sum
           
           echo "--- go.mod content ---"
           cat go.mod
