@@ -3,7 +3,7 @@ title: "Google I/O: A Quick Introduction"
 date: 2025-05-22
 tags: ["Developer Conference", "Google", "Technology"]
 description: "A concise overview of Google's annual developer conference, its purpose, key components, and why it matters to developers and tech enthusiasts alike."
-----
+---
 
 Google I/O (short for **Input/Output**) is Google's flagship annual developer conference. Held each spring—traditionally at the Shoreline Amphitheatre in Mountain View, California, and streamed worldwide—it gathers developers, product leaders, and tech enthusiasts to explore Google’s latest innovations across **Android**, **Chrome**, **AI/ML**, **Cloud**, and more.
 
