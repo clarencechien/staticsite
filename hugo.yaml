@@ -1,7 +1,7 @@
 baseURL: "https://example.com/" # Placeholder, user will update
 languageCode: "en-us"
 title: "Tech Forward Blog"
-theme: "PaperMod" # Hugo will look for themes/PaperMod
+theme: "github.com/adityatelange/hugo-PaperMod" # Hugo will look for themes/PaperMod
 
 minify: true
 
