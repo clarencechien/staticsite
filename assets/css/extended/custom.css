@@ -60,33 +60,35 @@ a:hover {
 
 /* Ensure that when PaperMod switches to dark mode, our light theme overrides are undone or adapted */
 body.dark {
-    /* Revert to PaperMod's dark theme variables or define a minimalist dark set */
-    /* For true minimalism, let PaperMod's default dark theme take over as much as possible. */
-    /* These vars ensure our light theme vars don't conflict with PaperMod's dark defaults. */
-    --main-background: var(--papermod-dark-bg); /* Use PaperMod's own dark variable names if known, or define */
-    --card-background: var(--papermod-dark-card-bg);
-    --primary-text-color: var(--papermod-dark-text);
-    --secondary-text-color: var(--papermod-dark-secondary-text);
-    --primary-link-color: var(--papermod-dark-link);
-    --hover-link-color: var(--papermod-dark-link-hover);
-    --border-color: var(--papermod-dark-border);
-    --code-block-background: #2e2e33; /* A generic dark code background */
+    --main-background: #1a1c1e;                     /* Deep dark for overall page */
+    --card-background: #212325;                     /* Dark for content cards/areas */
+    --primary-text-color: #e0e0e0;                 /* Light gray/off-white text */
+    --secondary-text-color: #b0b0b0;               /* Softer gray for secondary text */
+    --primary-link-color: #58a6ff;                 /* GitHub's dark mode link blue */
+    --hover-link-color: #80baff;                   /* Lighter blue for link hover */
+    --border-color: #3a3d40;                       /* Darker, subtle borders */
+    --code-block-background: #2b2b2f;               /* Dark background for code blocks */
 
-    /* If PaperMod's variables are known (inspect its CSS or docs), use them. Example: */
-    /* --main-background: var(--thm-dark-bg, #1A1B26); /* Example from a generic theme */
-    /* For now, let's assume PaperMod's .dark class handles most of this. */
-    /* We just need to make sure our light theme specificities don't override dark mode too aggressively. */
+    /* Undoing or overriding any light theme specific variables that might conflict */
+    --gh-bg-primary: var(--main-background);
+    --gh-bg-secondary: var(--card-background);
+    --gh-border-primary: var(--border-color);
+    --gh-text-primary: var(--primary-text-color);
+    --gh-text-secondary: var(--secondary-text-color);
+    --gh-link-primary: var(--primary-link-color);
+    --gh-link-hover: var(--hover-link-color);
 }
 
 /* Minimalist adjustments for dark mode if needed */
 body.dark .header, body.dark .footer {
-    background-color: #1e1e24; /* A slightly different dark for header/footer in dark mode */
-    border-color: #333;
+    background-color: #232527; /* New distinct, but dark, header/footer background */
+    border-color: #3a3d40;     /* Consistent with other dark borders */
+    color: var(--primary-text-color); /* Ensure text here is also light */
 }
 
 body.dark .highlight {
     background: var(--code-block-background) !important;
-    border-color: #444;
+    border-color: var(--border-color); /* Use the general dark border color */
 }
 
 /* General minimalist touches */
