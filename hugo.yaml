@@ -5,6 +5,13 @@ theme: "PaperMod" # Hugo will look for themes/PaperMod
 
 minify: true
 
+module:
+  imports:
+    - path: github.com/adityatelange/hugo-PaperMod
+      # disableFeatures: # Example: uncomment if you want to disable specific features
+      #   - "search" 
+      #   - "sidebar" 
+
 params:
   env: production
   description: "A blog about AI, Code, and Future Tech"
