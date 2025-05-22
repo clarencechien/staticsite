@@ -1,46 +1,107 @@
-/* Custom CSS for Future Tech/AI Vibe */
+/* Minimalist Light Theme (Default) - Inspired by GitHub */
 :root {
-    --main-bg-color: #1a1a2e; /* Dark blue/purple */
-    --main-text-color: #e0e0e0;
-    --accent-color: #00f0ff; /* Neon cyan/blue */
-    --code-bg-color: #232339;
-    --border-color: #3a3a5e;
+    --gh-bg-primary: #ffffff;       /* Main background */
+    --gh-bg-secondary: #f6f8fa;    /* Secondary background (e.g., code blocks) */
+    --gh-border-primary: #e1e4e8;   /* Borders */
+    --gh-text-primary: #24292e;     /* Primary text */
+    --gh-text-secondary: #586069;   /* Secondary text */
+    --gh-link-primary: #0366d6;     /* Links */
+    --gh-link-hover: #005cc5;       /* Link hover */
+
+    /* Override PaperMod variables for light theme */
+    --main-background: var(--gh-bg-primary);
+    --card-background: var(--gh-bg-primary);
+    --primary-text-color: var(--gh-text-primary);
+    --secondary-text-color: var(--gh-text-secondary);
+    --primary-link-color: var(--gh-link-primary);
+    --hover-link-color: var(--gh-link-hover);
+    --border-color: var(--gh-border-primary);
+    --code-block-background: var(--gh-bg-secondary); /* For syntax highlighting background */
 }
 
 body {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
-}
-
-body.dark {
-    --bg: var(--main-bg-color);
-    --card-bg: #1f1f35;
-    --primary: var(--accent-color);
-    --entry: var(--main-text-color);
-    --secondary: #b0b0c0;
-    --tertiary: #8080a0;
-    --border: var(--border-color);
+    background-color: var(--main-background);
+    color: var(--primary-text-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.6;
 }
 
 a {
-    color: var(--accent-color);
+    color: var(--primary-link-color);
+    text-decoration: none;
 }
+
 a:hover {
-    color: #80f8ff;
+    color: var(--hover-link-color);
     text-decoration: underline;
-    text-shadow: 0 0 5px var(--accent-color);
 }
 
-.highlight {
-    background: var(--code-bg-color) !important;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
+/* Header and Footer - ensure they blend with the light theme */
+.header, .footer {
+    background-color: var(--gh-bg-secondary); /* Slightly off-white for header/footer */
+    border-bottom: 1px solid var(--border-color);
 }
-
 .header {
-    background-color: var(--main-bg-color) !important;
+    border-bottom: 1px solid var(--border-color);
+}
+.footer {
+    border-top: 1px solid var(--border-color);
+    color: var(--secondary-text-color);
 }
 
-.footer {
-     background-color: var(--main-bg-color) !important;
+/* Code blocks styling for light theme */
+.highlight {
+    background: var(--code-block-background) !important; /* Important to override theme's inline styles if any */
+    border: 1px solid var(--border-color);
+    border-radius: 6px; /* GitHub's border radius */
+    padding: 0.8em;
+    overflow: auto;
+}
+
+/* Ensure that when PaperMod switches to dark mode, our light theme overrides are undone or adapted */
+body.dark {
+    /* Revert to PaperMod's dark theme variables or define a minimalist dark set */
+    /* For true minimalism, let PaperMod's default dark theme take over as much as possible. */
+    /* These vars ensure our light theme vars don't conflict with PaperMod's dark defaults. */
+    --main-background: var(--papermod-dark-bg); /* Use PaperMod's own dark variable names if known, or define */
+    --card-background: var(--papermod-dark-card-bg);
+    --primary-text-color: var(--papermod-dark-text);
+    --secondary-text-color: var(--papermod-dark-secondary-text);
+    --primary-link-color: var(--papermod-dark-link);
+    --hover-link-color: var(--papermod-dark-link-hover);
+    --border-color: var(--papermod-dark-border);
+    --code-block-background: #2e2e33; /* A generic dark code background */
+
+    /* If PaperMod's variables are known (inspect its CSS or docs), use them. Example: */
+    /* --main-background: var(--thm-dark-bg, #1A1B26); /* Example from a generic theme */
+    /* For now, let's assume PaperMod's .dark class handles most of this. */
+    /* We just need to make sure our light theme specificities don't override dark mode too aggressively. */
+}
+
+/* Minimalist adjustments for dark mode if needed */
+body.dark .header, body.dark .footer {
+    background-color: #1e1e24; /* A slightly different dark for header/footer in dark mode */
+    border-color: #333;
+}
+
+body.dark .highlight {
+    background: var(--code-block-background) !important;
+    border-color: #444;
+}
+
+/* General minimalist touches */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+article {
+    padding: 20px 0;
+}
+
+/* Ensure images are responsive and don't exceed container width */
+img {
+    max-width: 100%;
+    height: auto;
 }

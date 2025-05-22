@@ -16,7 +16,7 @@ params:
   env: production
   description: "A blog about AI, Code, and Future Tech"
   author: "AI Enthusiast"
-  defaultTheme: "dark"
+  defaultTheme: "light"
   ShowCodeCopyButtons: true
   ShowRssButtonInSectionTermList: true
   ShowToc: true
