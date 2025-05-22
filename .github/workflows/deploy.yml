@@ -21,7 +21,7 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: "0.125.4" # Specify a recent Hugo version
+      HUGO_VERSION: "0.128.2" # Specify a recent Hugo version
       GO_VERSION: "1.21"    # Specify Go version for Hugo Modules
     steps:
       - name: Checkout repository
@@ -94,7 +94,7 @@ jobs:
         env:
           # HUGO_ENV: production # Already set by default by actions-hugo
           # Set the base URL dynamically for GitHub Pages
-          HUGO_BASEURL: "https:// ${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          HUGO_BASEURL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
         run: |
           echo "Current directory listing before cleaning themes/ and building:"
           ls -la
