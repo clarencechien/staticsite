@@ -21,7 +21,7 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: "0.128.2" # Specify a recent Hugo version
+      HUGO_VERSION: "latest" # Specify a recent Hugo version
       GO_VERSION: "1.21"    # Specify Go version for Hugo Modules
     steps:
       - name: Checkout repository
